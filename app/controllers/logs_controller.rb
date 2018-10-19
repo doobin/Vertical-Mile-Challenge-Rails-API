@@ -1,4 +1,6 @@
-class LogsController < ApplicationController
+# frozen_string_literal: true
+
+class LogsController < OpenReadController
   before_action :set_log, only: %i[show update destroy]
 
   # GET /logs
@@ -10,12 +12,14 @@ class LogsController < ApplicationController
 
   # GET /logs/1
   def show
+    @log = current_user.logs.find(params[:id])
+
     render json: @log
   end
 
   # POST /logs
   def create
-    @log = Log.new(log_params)
+    @log = current_user.logs.build(log_params)
 
     if @log.save
       render json: @log, status: :created
@@ -39,13 +43,14 @@ class LogsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_log
-      @log = Log.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def log_params
-      params.require(:log).permit(:date, :feet, :activity)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_log
+    @log = current_user.logs.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def log_params
+    params.require(:log).permit(:date, :feet, :activity, :user_id)
+  end
 end
