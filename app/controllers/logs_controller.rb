@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class LogsController < OpenReadController
+class LogsController < ProtectedController
   before_action :set_log, only: %i[show update destroy]
 
   # GET /logs
   def index
-    @logs = Log.all
+    @logs = current_user.logs.all
 
     render json: @logs
   end
