@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class LogsController < ProtectedController
-  before_action :set_log, only: %i[show update destroy index]
+  before_action :set_log, only: %i[show update destroy]
 
   # GET /logs
   def index
