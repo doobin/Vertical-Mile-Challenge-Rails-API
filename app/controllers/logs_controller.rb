@@ -5,7 +5,7 @@ class LogsController < ProtectedController
 
   # GET /logs
   def index
-    @logs = Log.all
+    @logs = current_user.logs.all
 
     render json: @logs
   end
