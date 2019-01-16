@@ -18,6 +18,7 @@ https://doobin.github.io/Vertical-Mile-Challenge-Client/
 * CSS5
 * JavaScript
 * jQuery
+* Ruby on Rails
 * AJAX
 * Bootstrap
 
@@ -33,7 +34,7 @@ At the start of the project, I reviewed the requirements documentation (in full 
 
 2. Development(Stage1)
   * Create Database
-  * Rails Scaffold resources
+  * Scaffold Resources (Rails)
   * Adjust controllers to handle apps API requests accordingly
 
 3. Development(Stage 2)
